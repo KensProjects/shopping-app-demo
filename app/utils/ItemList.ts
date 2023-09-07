@@ -1,0 +1,18 @@
+export const ItemList = [
+  { name: "Banana", price: 0.25, quantity: 0 },
+  { name: "Egg", price: 0.25, quantity: 0 },
+  { name: "Steak", price: 12, quantity: 0 },
+  { name: "Apple", price: 1, quantity: 0 },
+  { name: "Milk", price: 2.5, quantity: 0 },
+  { name: "Potato", price: 2, quantity: 0 },
+  { name: "Butter", price: 1, quantity: 0 },
+  { name: "Water Bottle", price: 1.5, quantity: 0 },
+  { name: "Lettuce", price: 1, quantity: 0 },
+  { name: "Tomato", price: 0.5, quantity: 0 },
+  { name: "Onion", price: 1, quantity: 0 },
+  { name: "Green Pepper", price: 1, quantity: 0 },
+  { name: "Salt", price: 0.25, quantity: 0 },
+  { name: "Black Pepper", price: 4, quantity: 0 },
+  { name: "Olive Oil", price: 8, quantity: 0 },
+  { name: "Whole Chicken", price: 15, quantity: 0 },
+];
