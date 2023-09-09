@@ -107,7 +107,6 @@ export default function Cart() {
   if (!cartData) return (<div>Please add items to your cart!</div>)
 
   if (error) return <div className="bg-black-75 w-screen h-screen flex justify-center items-center text-red-500 z-50">
-    <p className="text-center text-red-500">{error}</p>
     <Error /></div>
 
   return (
