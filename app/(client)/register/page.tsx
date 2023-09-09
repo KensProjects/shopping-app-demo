@@ -33,7 +33,7 @@ export default function Register() {
       });
       setCredentials(initialCredentials)
     } catch (error:any) {
-      setError(error.message)
+      setError("Registration error!")
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)

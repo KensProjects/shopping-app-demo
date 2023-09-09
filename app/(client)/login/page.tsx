@@ -30,13 +30,12 @@ export default function Login() {
       });
       setCredentials(initialCredentials)
     } catch (error:any) {
-      console.log(error)
-      // setError(error.toString())
-      // setErrorToggle(true)
-      // setTimeout(() => {
-      //   setErrorToggle(false)
-      //   setError("")
-      // }, 3000)
+      setError("Login failed")
+      setErrorToggle(true)
+      setTimeout(() => {
+        setErrorToggle(false)
+        setError("")
+      }, 3000)
     }
   }
   useEffect(() => {

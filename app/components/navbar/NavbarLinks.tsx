@@ -13,14 +13,14 @@ export default function NavbarLinks() {
   const { status } = useSession();
   const [error, setError] = useAtom(errorAtom)
   const [errorToggle, setErrorToggle] = useAtom(errorToggleAtom)
-  
+
   async function getCart() {
     try {
       const res = await axios.get(`${BASEURL}/api/cart`);
       const data = await res.data;
       return data;
     } catch (error: any) {
-      setError(error.toString())
+      setError("Error!")
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)
@@ -34,6 +34,14 @@ export default function NavbarLinks() {
     queryFn: getCart,
   });
 
+  const subTotalAmt: number = parseInt(cartData?.cart
+    .reduce(
+      (sum: number, item: TItem) => sum + item.quantity * item.price,
+      0
+    )
+    .toFixed(2))
+
+  const totalAmt: number = Number((subTotalAmt + (5.3 * subTotalAmt / 100)).toFixed(2))
 
   return (
 
@@ -47,12 +55,7 @@ export default function NavbarLinks() {
           <li className="flex justify-center items-center bg-blue-400 hover:bg-blue-500 duration-100 rounded-lg px-3 py-1 cursor-pointer">
             <div className="flex flex-col text-center">
               <h1 className="text-xs">
-                {loading ? 'Loading' : ('$' + cartData?.cart
-                  .reduce(
-                    (sum: number, item: TItem) => sum + item.quantity * item.price,
-                    0
-                  )
-                  .toFixed(2))}
+                {loading ? 'Loading' : (`$${totalAmt}`)}
               </h1>
               <Link href="/cart">Cart</Link>
             </div>

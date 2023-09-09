@@ -62,7 +62,7 @@ export default function Catalog() {
         return data;
       }
     } catch (error:any) {
-      setError(error.toString())
+      setError("Error!")
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)
@@ -77,7 +77,7 @@ export default function Catalog() {
       setCart(data.cart);
       return data;
     } catch (error:any) {
-      setError(error.message)
+      setError("Error!")
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)

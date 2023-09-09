@@ -35,7 +35,7 @@ export default function Cart() {
       const data = await res.data;
       return data;
     } catch (error: any) {
-      setError(error.toString())
+      setError("Error!")
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)
@@ -53,7 +53,7 @@ export default function Cart() {
       const data = await res.data;
       return data;
     } catch (error: any) {
-      setError(error.toString())
+      setError("Error!")
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)
@@ -68,7 +68,7 @@ export default function Cart() {
       const data = await res.data;
       return data;
     } catch (error: any) {
-      setError(error.message)
+      setError("Error!")
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)
