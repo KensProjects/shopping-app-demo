@@ -32,14 +32,12 @@ export default function MobileMenu() {
     queryFn: getCart,
   });
 
-  const subTotalAmt: number = parseInt(cartData?.cart
+  const totalAmt: number = (cartData?.cart
     .reduce(
       (sum: number, item: TItem) => sum + item.quantity * item.price,
       0
     )
     .toFixed(2))
-
-  const totalAmt: number = Number((subTotalAmt).toFixed(2))
 
 
 
