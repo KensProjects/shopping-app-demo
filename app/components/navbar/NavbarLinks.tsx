@@ -20,7 +20,7 @@ export default function NavbarLinks() {
       const data = await res.data;
       return data;
     } catch (error: any) {
-      setError(error)
+      setError(error.toString())
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)

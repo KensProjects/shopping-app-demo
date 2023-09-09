@@ -30,7 +30,7 @@ export default function Login() {
       });
       setCredentials(initialCredentials)
     } catch (error:any) {
-      setError(error)
+      setError(error.toString())
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)

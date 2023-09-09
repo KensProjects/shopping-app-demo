@@ -62,7 +62,7 @@ export default function Catalog() {
         return data;
       }
     } catch (error:any) {
-      setError(error)
+      setError(error.toString())
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)

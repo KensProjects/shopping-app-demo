@@ -36,7 +36,7 @@ export default function SearchBar() {
       );
       redirect(`/catalog?item=${searchTerm.toLowerCase()}`);
     } catch (error:any) {
-      setError(error)
+      setError(error.toString())
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)
@@ -60,7 +60,7 @@ export default function SearchBar() {
       );
       redirect(`/catalog?item=${searchListItem.toLowerCase()}`);
     } catch (error:any) {
-      setError(error)
+      setError(error.toString())
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)
