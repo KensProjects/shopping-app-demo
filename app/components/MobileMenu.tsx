@@ -32,12 +32,14 @@ export default function MobileMenu() {
     queryFn: getCart,
   });
 
-  const totalAmt = (cartData?.cart
+  const subTotalAmt: number = parseInt(cartData?.cart
     .reduce(
       (sum: number, item: TItem) => sum + item.quantity * item.price,
       0
     )
     .toFixed(2))
+
+  const totalAmt: number = Number((subTotalAmt + (1 * subTotalAmt / 100)).toFixed(2))
 
 
   if (mobileToggle) return (
