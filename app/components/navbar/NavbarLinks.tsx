@@ -34,7 +34,7 @@ export default function NavbarLinks() {
     queryFn: getCart,
   });
 
-  const totalAmt: number = Number(cartData?.cart
+  const totalAmt = (cartData?.cart
     .reduce(
       (sum: number, item: TItem) => sum + item.quantity * item.price,
       0
