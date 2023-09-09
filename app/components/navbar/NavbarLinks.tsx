@@ -34,14 +34,13 @@ export default function NavbarLinks() {
     queryFn: getCart,
   });
 
-  const subTotalAmt: number = parseInt(cartData?.cart
+  const totalAmt: number = parseInt(cartData?.cart
     .reduce(
       (sum: number, item: TItem) => sum + item.quantity * item.price,
       0
     )
     .toFixed(2))
 
-  const totalAmt: number = Number((subTotalAmt + (5.3 * subTotalAmt / 100)).toFixed(2))
 
   return (
 

@@ -90,14 +90,14 @@ export default function Cart() {
     onSuccess: () => queryClient.invalidateQueries(["cart"]),
   });
 
-  const subTotalAmt: number = parseInt(cartData?.cart
+  const totalAmt: number = parseInt(cartData?.cart
     .reduce(
       (sum: number, item: TItem) => sum + item.quantity * item.price,
       0
     )
     .toFixed(2))
 
-  const totalAmt: number = Number((subTotalAmt + (5.3 * subTotalAmt / 100)).toFixed(2))
+
 
   if (cartDataLoading || decreaseLoading || increaseLoading)
     return <div className="w-screen h-screen flex justify-center items-center"><Spinner /></div>
@@ -157,8 +157,6 @@ export default function Cart() {
           </select>
 
           <div className="flex flex-col justify-center items-center gap-1">
-            <h2>Subtotal : ${subTotalAmt.toFixed(2)}</h2>
-            <h2>Sales Tax = 5.3%</h2>
             <h2 className="">Total: ${totalAmt}</h2>
           </div>
 
