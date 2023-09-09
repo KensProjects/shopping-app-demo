@@ -157,7 +157,7 @@ export default function Cart() {
           </select>
 
           <div className="flex flex-col justify-center items-center gap-1">
-            <h2 className="">Total: ${totalAmt}</h2>
+            <h2 className="">Total: ${totalAmt.toFixed(2)}</h2>
           </div>
 
 

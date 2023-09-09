@@ -54,7 +54,7 @@ export default function NavbarLinks() {
           <li className="flex justify-center items-center bg-blue-400 hover:bg-blue-500 duration-100 rounded-lg px-3 py-1 cursor-pointer">
             <div className="flex flex-col text-center">
               <h1 className="text-xs">
-                {loading ? 'Loading' : (`$${totalAmt}`)}
+                {loading ? 'Loading' : (`$${totalAmt.toFixed(2)}`)}
               </h1>
               <Link href="/cart">Cart</Link>
             </div>
