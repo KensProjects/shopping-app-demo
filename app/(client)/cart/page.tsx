@@ -97,7 +97,7 @@ export default function Cart() {
     )
     .toFixed(2))
 
-  const totalAmt: number = Number((subTotalAmt + (1 * subTotalAmt / 100)).toFixed(2))
+  const totalAmt: number = Number((subTotalAmt).toFixed(2))
 
 
 

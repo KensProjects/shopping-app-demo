@@ -39,7 +39,8 @@ export default function MobileMenu() {
     )
     .toFixed(2))
 
-  const totalAmt: number = Number((subTotalAmt + (1 * subTotalAmt / 100)).toFixed(2))
+  const totalAmt: number = Number((subTotalAmt).toFixed(2))
+
 
 
   if (mobileToggle) return (

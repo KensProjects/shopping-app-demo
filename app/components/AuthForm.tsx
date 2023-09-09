@@ -28,8 +28,8 @@ export default function AuthForm({
             setCredentials({ ...credentials, username: e.target.value })
           }
           className="bg-white p-1 border-none ring-2 rounded-sm"
-          min={8}
-          max={16}
+          minLength={8}
+          maxLength={16}
           autoComplete="true"
         />
       </div>
@@ -44,6 +44,7 @@ export default function AuthForm({
           }
           className="bg-white p-1 border-none ring-2 rounded-sm"
           autoComplete="true"
+          minLength={8}
         />
       </div>
       <button type="submit" className="bg-emerald-300 h-12 w-60 hover:bg-red-400 duration-200 ease-in-out text-white rounded-lg">
