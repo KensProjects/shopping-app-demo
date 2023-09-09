@@ -34,7 +34,7 @@ export default function NavbarLinks() {
     queryFn: getCart,
   });
 
-  const totalAmt: number = parseInt(cartData?.cart
+  const totalAmt: number = Number(cartData?.cart
     .reduce(
       (sum: number, item: TItem) => sum + item.quantity * item.price,
       0
@@ -54,7 +54,7 @@ export default function NavbarLinks() {
           <li className="flex justify-center items-center bg-blue-400 hover:bg-blue-500 duration-100 rounded-lg px-3 py-1 cursor-pointer">
             <div className="flex flex-col text-center">
               <h1 className="text-xs">
-                {loading ? 'Loading' : (`$${totalAmt.toFixed(2)}`)}
+                {loading ? 'Loading' : (`$${totalAmt}`)}
               </h1>
               <Link href="/cart">Cart</Link>
             </div>

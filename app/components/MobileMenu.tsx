@@ -32,7 +32,7 @@ export default function MobileMenu() {
     queryFn: getCart,
   });
 
-  const totalAmt: number = parseInt(cartData?.cart
+  const totalAmt: number = Number(cartData?.cart
     .reduce(
       (sum: number, item: TItem) => sum + item.quantity * item.price,
       0
@@ -60,7 +60,7 @@ export default function MobileMenu() {
           </li>}
           {session && <li className="w-full sm:w-10/12  h-16 flex flex-col justify-center items-center border border-black py-2">
             <div>
-              <h1>{loading ? 'Loading' : (`$${totalAmt.toFixed(2)}`)}
+              <h1>{loading ? 'Loading' : (`$${totalAmt}`)}
               </h1>
               <Link className="flex justify-center items-center" href="/cart" onClick={e => setMobileToggle(prev => !prev)}>Cart</Link></div>
           </li>}

@@ -90,7 +90,7 @@ export default function Cart() {
     onSuccess: () => queryClient.invalidateQueries(["cart"]),
   });
 
-  const totalAmt: number = parseInt(cartData?.cart
+  const totalAmt: number = Number(cartData?.cart
     .reduce(
       (sum: number, item: TItem) => sum + item.quantity * item.price,
       0
@@ -157,7 +157,7 @@ export default function Cart() {
           </select>
 
           <div className="flex flex-col justify-center items-center gap-1">
-            <h2 className="">Total: ${totalAmt.toFixed(2)}</h2>
+            <h2 className="">Total: ${totalAmt}</h2>
           </div>
 
 
