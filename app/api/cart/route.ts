@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     await prisma.$disconnect();
     return NextResponse.json(newItem);
   } catch (error) {
-    console.error(error);
+    throw new Error("Item addition error!")
   }
 }
 
@@ -83,6 +83,6 @@ export async function PUT(req: Request) {
       return NextResponse.json(userInfo);
     }
   } catch (error) {
-    console.error(error);
+    throw new Error("Item edit error!")
   }
 }

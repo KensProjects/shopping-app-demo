@@ -38,7 +38,9 @@ export default function Catalog() {
       const pickedItem = ItemList.find((item) => {
         return item.name.toLowerCase() === itemName.toLowerCase();
       });
-      if (!pickedItem) return console.log("picked not found");
+      if (!pickedItem) {
+       return console.error("Item not in catalog!")
+      }
       const itemInCart = cartData?.cart.find((item:TItem) => {
         return item.name.toLowerCase() == itemName.toLowerCase();
       });
@@ -56,7 +58,6 @@ export default function Catalog() {
           userId: session?.user.id,
         });
         const data = await res.data;
-        console.log(cartData)
         return data;
       }
     } catch (error:any) {

@@ -36,6 +36,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(user);
   } catch (error) {
-    console.error(error);
+    throw new Error("Registration error!")
   }
 }
