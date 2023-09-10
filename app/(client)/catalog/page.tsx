@@ -35,16 +35,21 @@ export default function Catalog() {
   const [catalog, setCatalog] = useAtom(catalogAtom);
   const [cart, setCart] = useAtom(cartAtom);
 
+  const { data: cartData } = useQuery({
+    queryKey: ["cart"],
+    queryFn: getCart,
+  });
+
   async function addItem(itemName: string) {
     try {
       const pickedItem = ItemList.find((item) => {
         return item.name.toLowerCase() === itemName.toLowerCase();
       });
       if (!pickedItem) return console.log("picked not found");
-      const itemInCart = cart.find((item) => {
+      const itemInCart = cartData?.cart.find((item:TItem) => {
         return item.name.toLowerCase() === itemName.toLowerCase();
       });
-      if (itemInCart) {
+      if (itemInCart !== null) {
         const res = await axios.put(`${BASEURL}/api/cart/`, {
           name: itemName,
           type: "increment",
@@ -62,7 +67,7 @@ export default function Catalog() {
         return data;
       }
     } catch (error:any) {
-      setError("Item already in cart!")
+      setError("Error!")
       setErrorToggle(true)
       setTimeout(() => {
         setErrorToggle(false)
@@ -85,10 +90,7 @@ export default function Catalog() {
       }, 3000)
     }
   }
-  const { data: cartData } = useQuery({
-    queryKey: ["cart"],
-    queryFn: getCart,
-  });
+
   const addItemMutation = useMutation({
     mutationFn: addItem,
     onSuccess: () => queryClient.invalidateQueries(["cart"]),
