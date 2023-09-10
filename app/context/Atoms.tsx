@@ -21,7 +21,6 @@ export const mobileToggleAtom = atom(false);
 export const searchTermAtom = atom("")
 export const searchListAtom = atom<any[]>([])
 export const catalogAtom = atom<TItem[]>([]);
-export const cartAtom = atom<TItem[]>([]);
 export const errorAtom = atom<string>("")
 export const errorToggleAtom = atom<boolean>(false)
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useAtom } from "jotai";
-import { TItem, cartAtom, catalogAtom, errorAtom, errorToggleAtom, searchTermAtom } from "@/app/context/Atoms";
+import { TItem, catalogAtom, errorAtom, errorToggleAtom } from "@/app/context/Atoms";
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
@@ -11,12 +11,6 @@ import { redirect } from "next/navigation";
 import { BASEURL } from "@/app/utils/baseUrl";
 import Spinner from "@/app/components/Spinner";
 import Error from "@/app/components/Error";
-
-// import { Session } from "next-auth";
-
-// export interface ISession extends Session {
-//   user:{id?:string}
-// }
 
 export default function Catalog() {
 
@@ -33,7 +27,6 @@ export default function Catalog() {
   const queryClient = useQueryClient();
 
   const [catalog, setCatalog] = useAtom(catalogAtom);
-  const [cart, setCart] = useAtom(cartAtom);
 
   const { data: cartData } = useQuery({
     queryKey: ["cart"],
@@ -47,24 +40,23 @@ export default function Catalog() {
       });
       if (!pickedItem) return console.log("picked not found");
       const itemInCart = cartData?.cart.find((item:TItem) => {
-        return item.name.toLowerCase() === itemName.toLowerCase();
+        return item.name.toLowerCase() == itemName.toLowerCase();
       });
-      console.log(itemInCart)
-      if (itemInCart !== null) {
-        const res = await axios.patch(`${BASEURL}/api/cart/`, {
+      if (itemInCart) {
+        const res = await axios.put(`${BASEURL}/api/cart/`, {
           id:itemInCart.id,
           type: "increment",
           userId: session?.user.id,
         });
         const data = await res.data;
-        setCart(data)
+        return data
       } else {
         const res = await axios.post(`${BASEURL}/api/cart`, {
           ...pickedItem,
           userId: session?.user.id,
         });
         const data = await res.data;
-        setCart([...cart, data]);
+        console.log(cartData)
         return data;
       }
     } catch (error:any) {
@@ -80,7 +72,6 @@ export default function Catalog() {
     try {
       const res = await axios.get(`${BASEURL}/api/cart`);
       const data = await res.data;
-      setCart(data.cart);
       return data;
     } catch (error:any) {
       setError("Error!")
@@ -109,7 +100,6 @@ export default function Catalog() {
       }
     }
     checkSearch()
-    setCart(cartData?.cart);
   }, []);
 
   if (status === "loading") return <div className="w-screen h-screen flex justify-center items-center"><Spinner /></div>

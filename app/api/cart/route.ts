@@ -41,7 +41,7 @@ export async function POST(req: Request) {
   }
 }
 
-export async function PATCH(req: Request) {
+export async function PUT(req: Request) {
   const { id, userId, type } = await req.json();
   try {
     if (type === "increment") {
