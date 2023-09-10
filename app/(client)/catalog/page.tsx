@@ -51,7 +51,7 @@ export default function Catalog() {
       });
       if (itemInCart !== null) {
         const res = await axios.put(`${BASEURL}/api/cart/`, {
-          name: itemName,
+          id:itemInCart.id,
           type: "increment",
           userId: session?.user.id,
         });
