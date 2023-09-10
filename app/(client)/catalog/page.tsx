@@ -49,8 +49,9 @@ export default function Catalog() {
       const itemInCart = cartData?.cart.find((item:TItem) => {
         return item.name.toLowerCase() === itemName.toLowerCase();
       });
+      console.log(itemInCart)
       if (itemInCart !== null) {
-        const res = await axios.put(`${BASEURL}/api/cart/`, {
+        const res = await axios.patch(`${BASEURL}/api/cart/`, {
           id:itemInCart.id,
           type: "increment",
           userId: session?.user.id,
